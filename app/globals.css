@@ -1,0 +1,125 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: #fdfdfd;
+  --foreground: #1c1c1c;
+  --card: #ffffff;
+  --card-foreground: #1c1c1c;
+  --popover: #ffffff;
+  --popover-foreground: #1c1c1c;
+  --primary: #1FAE4B;
+  --primary-foreground: #ffffff;
+  --secondary: #f4fcf6;
+  --secondary-foreground: #1FAE4B;
+  --muted: #f0f0f0;
+  --muted-foreground: #666666;
+  --accent: #1FAE4B;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #e9e9e9;
+  --input: #f8f8f8;
+  --ring: #1FAE4B;
+  --radius: 1rem;
+  
+  /* Premium Accents */
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.5);
+  --primary-glow: rgba(31, 174, 75, 0.15);
+}
+
+.dark {
+  --background: #0a0c0a;
+  --foreground: #f0f0f0;
+  --card: #121412;
+  --card-foreground: #f0f0f0;
+  --popover: #121412;
+  --popover-foreground: #f0f0f0;
+  --primary: #22c55e;
+  --primary-foreground: #000000;
+  --secondary: #1a2e1a;
+  --secondary-foreground: #22c55e;
+  --muted: #1a1a1a;
+  --muted-foreground: #a1a1a1;
+  --accent: #22c55e;
+  --accent-foreground: #000000;
+  --destructive: #7f1d1d;
+  --destructive-foreground: #f0f0f0;
+  --border: #262626;
+  --input: #1a1a1a;
+  --ring: #22c55e;
+  
+  --glass-bg: rgba(0, 0, 0, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --primary-glow: rgba(34, 197, 94, 0.1);
+}
+
+@theme inline {
+  --font-sans: var(--font-poppins), 'Poppins Fallback', sans-serif;
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground scroll-smooth;
+    selection-background-color: var(--primary);
+    selection-color: var(--primary-foreground);
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-[var(--glass-bg)] backdrop-blur-md border border-[var(--glass-border)] shadow-lg;
+  }
+  
+  .glass-card {
+    @apply bg-card/60 backdrop-blur-lg border border-white/10 shadow-xl transition-all duration-300;
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-green-600;
+  }
+  
+  .btn-primary-premium {
+    @apply bg-primary text-primary-foreground shadow-[0_0_20px_var(--primary-glow)] hover:shadow-[0_0_30px_var(--primary-glow)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] font-bold py-3 px-8 rounded-xl;
+  }
+}
+
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  animation: reveal 0.8s ease forwards;
+}
+
