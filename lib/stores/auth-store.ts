@@ -44,7 +44,7 @@ interface AuthState {
   logoutAdmin: () => Promise<void>
 }
 
-const API_URL = 'http://localhost:8000'
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'
 
 export const useAuthStore = create<AuthState>()(
   persist(

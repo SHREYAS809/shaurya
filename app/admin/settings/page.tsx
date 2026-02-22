@@ -12,7 +12,7 @@ import {
   Globe, Moon, SunMedium, Database, RefreshCw, Loader2, Wifi
 } from 'lucide-react'
 
-const API_URL = 'http://localhost:8000'
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'
 
 export default function AdminSettingsPage() {
   const router = useRouter()
